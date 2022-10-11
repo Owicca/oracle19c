@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  o19c:
+    image: doctorkirk/oracle-19c
+    container_name: o19c
+    ulimits:
+      nofile:
+        soft: 10000
+        hard: 10000
+    ports:
+      - 1521:1521
+    environment:
+      - ORACLE_SID=${ORACLE_SID}
+      - ORACLE_PWD=${ORACLE_PWD}
+      - ORACLE_CHARACTERSET=${ORACLE_CHARACTERSET}
+    volumes:
+      - ./oradata/:/opt/oracle/oradata
